@@ -35,11 +35,12 @@ endif
 ifeq ($(TARGET_USES_ION),true)
 libmm-venc-def += -DUSE_ION
 endif
-
 ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
 venc-inc       := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 endif
-
+ifeq ($(TARGET_USES_MEDIA_EXTENSIONS),true)
+libmm-venc-def += -DUSE_NATIVE_HANDLE_SOURCE
+endif
 libmm-venc-def += -D_ANDROID_ICS_
 # ---------------------------------------------------------------------------------
 # 			Make the Shared library (libOmxVenc)
